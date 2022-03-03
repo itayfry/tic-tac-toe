@@ -6,8 +6,10 @@ const Cell = ({ currentPlayer, toggleCurrentPlayer }) => {
   return (
     <td
       onClick={() => {
-        setVal(currentPlayer);
-        toggleCurrentPlayer();
+        if (val === null) {
+          setVal(currentPlayer);
+          toggleCurrentPlayer();
+        }
       }}
     >
       {val}
@@ -17,15 +19,25 @@ const Cell = ({ currentPlayer, toggleCurrentPlayer }) => {
 
 const Row = ({ currentPlayer, toggleCurrentPlayer }) => (
   <tr>
-    <Cell currentPlayer={currentPlayer} toggleCurrentPlayer={toggleCurrentPlayer} />
-    <Cell currentPlayer={currentPlayer} toggleCurrentPlayer={toggleCurrentPlayer} />
-    <Cell currentPlayer={currentPlayer} toggleCurrentPlayer={toggleCurrentPlayer} />
+    <Cell
+      currentPlayer={currentPlayer}
+      toggleCurrentPlayer={toggleCurrentPlayer}
+    />
+    <Cell
+      currentPlayer={currentPlayer}
+      toggleCurrentPlayer={toggleCurrentPlayer}
+    />
+    <Cell
+      currentPlayer={currentPlayer}
+      toggleCurrentPlayer={toggleCurrentPlayer}
+    />
   </tr>
 );
 
 function App() {
   const [currentPlayer, setCurrentPlayer] = useState("X"); // X Y
-  const toggleCurrentPlayer = () => currentPlayer === 'X' ? setCurrentPlayer('Y') : setCurrentPlayer('X');
+  const toggleCurrentPlayer = () =>
+    currentPlayer === "X" ? setCurrentPlayer("Y") : setCurrentPlayer("X");
   return (
     <div className="App">
       <header className="App-header">
